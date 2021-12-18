@@ -14,10 +14,6 @@ export default {
 </script>
 
 <style lang="scss">
-@font-face {
-  font-family: "Source Sans Pro"; 
-  src: url("./assets/fonts/SourceSansPro/SourceSansPro-Light.ttf") format("truetype");
-} 
 
 * {
   margin: 0;
@@ -27,10 +23,19 @@ export default {
 
 body {
   background: #f7f6f4;
-  font-family: 'Source Sans Pro';
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
   font-size: 28px;
+}
+
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
 }
 </style>
