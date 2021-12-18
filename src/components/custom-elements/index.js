@@ -1,3 +1,5 @@
 import MyInput from './MyInput';
+import MyTextArea from './MyTextArea';
+import MyButton from './MyButton'
 
-export {MyInput}
+export { MyInput, MyTextArea, MyButton }
