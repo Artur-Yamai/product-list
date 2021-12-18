@@ -3,7 +3,7 @@
         <Header/>
         <div class="test-job__wrapper">
             <FormAddProducts/>
-            <ProductList/>
+            <ProductsList/>
         </div>
     </div>
 </template>
@@ -11,13 +11,13 @@
 <script>
 import Header from './Header';
 import FormAddProducts from './FormAddProducts';
-import ProductList from './ProductList';
+import {ProductsList} from './ProductsList';
 
 export default {
     components: {
         Header,
         FormAddProducts,
-        ProductList
+        ProductsList
     }    
 }
 </script>
