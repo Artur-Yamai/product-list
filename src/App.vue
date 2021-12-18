@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TestJob/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TestJob from './components/TestJob'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TestJob
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@font-face {
+  font-family: "Source Sans Pro"; 
+  src: url("./assets/fonts/SourceSansPro/SourceSansPro-Light.ttf") format("truetype");
+} 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f6f4;
+  font-family: 'Source Sans Pro';
+}
+
+h1 {
+  font-size: 28px;
 }
 </style>
