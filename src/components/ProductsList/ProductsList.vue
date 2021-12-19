@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         removeProduct(id) {
-            this.$store.commit('removeProduct', id)
+            this.$store.dispatch('REMOVE_PRODUCT', id)
         }
     }
 }

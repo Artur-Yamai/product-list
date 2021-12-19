@@ -95,7 +95,7 @@ export default {
             const newProduct = JSON.parse(JSON.stringify(this.product))
             newProduct.id = Date.now();
             newProduct.price = +newProduct.price;
-            this.$store.commit('setProductList', newProduct);
+            this.$store.dispatch('SET_PRODUCT', newProduct);
             this.load();
             
         },
@@ -158,6 +158,18 @@ export default {
 
     &__btn {
         margin-top: 12px;
+    }
+}
+
+@media (max-width: 980px) { 
+    .add-products-form {
+        margin: 0 auto 16px;
+    }
+}
+
+@media (max-width: 980px) { 
+    .add-products-form {
+        width: 100%;
     }
 }
 </style>

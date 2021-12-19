@@ -37,11 +37,11 @@ export default createStore({
     getProductList: state => state.productList
   },
   mutations: {
-    setProductList(state, product) {
+    addProductList(state, product) {
       state.productList.push(product)
     },
 
-    removeProduct(state, id) {      
+    removeProduct(state, id) {
       const index = state.productList.findIndex(el => el.id === id);
       state.productList.splice(index,1)
     },
@@ -58,6 +58,31 @@ export default createStore({
           state.productList.sort((a, b) => a.title < b.title ? -1 : 1);
           break;
       }
+    }
+  },
+  actions: {
+    SET_PRODUCT({commit, dispatch}, payLoad) {
+      commit('addProductList', payLoad);
+      dispatch('SAVE_STORAGE');
+    },
+
+    REMOVE_PRODUCT({commit, dispatch}, payLoad) {
+      commit('removeProduct', payLoad);      
+      dispatch('SAVE_STORAGE');
+    },
+
+    GET_STORAGE({state}) {      
+      if (!localStorage.allProducts) {
+        return false;
+      }
+      
+      state.productList = JSON.parse(localStorage.allProducts);
+    },
+
+    // сохраняет данные в localStorage
+    SAVE_STORAGE({state}) {     
+      let actualData = JSON.parse(JSON.stringify(state.productList));
+      localStorage.setItem('allProducts', JSON.stringify(actualData));
     }
   }
 })
