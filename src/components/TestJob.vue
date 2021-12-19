@@ -28,4 +28,11 @@ export default {
   max-width: 1440px;
   margin: 0 auto;
 }
+
+@media (max-width: 720px) { 
+    .test-job__wrapper {  
+        display: flex;
+        flex-direction: column;
+    }
+}
 </style>

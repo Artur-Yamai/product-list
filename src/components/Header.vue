@@ -1,7 +1,7 @@
 <template>
     <div class="header">        
         <h1>Добавление товара</h1>
-        <select v-model="selected">
+        <select class="select" v-model="selected">
             <option value="default" default>По умолчанию</option>
             <option value="priceToMax">по цене &#8593;</option>
             <option value="priceToMin">по цене &#8595;</option>
@@ -64,6 +64,13 @@ option {
 
     &:focus {
         background-color: red;
+    }
+}
+
+@media (max-width: 720px) { 
+    select.select {
+        padding: 0 2px;
+    font-size: 10px;
     }
 }
 </style>
