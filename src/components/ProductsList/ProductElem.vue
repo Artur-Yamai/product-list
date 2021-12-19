@@ -138,6 +138,10 @@ export default {
     .product-elem {
         width: calc(100% / 2 - 18px);
         margin: 0 0 16px;
+
+        &:last-child {
+            margin: 0 0 16px;
+        }
     }
 }
 
@@ -150,7 +154,7 @@ export default {
 
 @media (max-width: 720px) { 
     .product-elem {  
-        width: 100%;
-    }
+        width: 100%;        
+    }    
 }
 </style>
