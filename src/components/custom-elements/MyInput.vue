@@ -3,6 +3,8 @@
         class="my-input"
         :type="type"
         :placeholder="placeholder"
+        :value="modelValue" 
+        @input="$emit('update:modelValue', $event.target.value)"
     >
 </template>
 
@@ -13,6 +15,12 @@ export default {
         type: {type: String, default: 'text'},
         placeholder: {type: String, default: 'Заполните поле'},
         width: {type: Number, default: null},
+        modelValue: {type: [String, Number]}
+    },
+    data() {
+        return {
+            val: this.value
+        }
     }
 }
 </script>
@@ -25,6 +33,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .my-input {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
     margin: 0;
     border: 0;
     padding: 11px 16px;
@@ -36,5 +49,12 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     font-size: 12px;
     line-height: 15px;
+
+    &::placeholder {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 12px;
+        line-height: 15px;
+        color: #B4B4B4;
+    }
 }
 </style>
