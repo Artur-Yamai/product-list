@@ -17,11 +17,6 @@ export default {
         width: {type: Number, default: null},
         modelValue: {type: [String, Number]}
     },
-    data() {
-        return {
-            val: this.value
-        }
-    }
 }
 </script>
 
