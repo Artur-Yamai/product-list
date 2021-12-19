@@ -18,16 +18,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .my-input {
-    padding: 0;
     margin: 0;
     border: 0;
+    padding: 11px 16px;
     
     height: 36px;
     background: #FFFEFB;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    padding: 11px 16px;
     width: 100%;
+    font-size: 12px;
+    line-height: 15px;
 }
 </style>
