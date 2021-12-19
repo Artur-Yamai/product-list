@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         stylizedPrice() {
-            return this.price.toString().match(/.{3}/g).join(' ')
+            return new Intl.NumberFormat('ru-RU').format(this.price)
         }
     },
     methods: {
@@ -40,7 +40,7 @@ export default {
 .product-elem {
     position: relative;
     min-height: 423px;
-    min-width: 332px;
+    min-width: 280px;
     width: calc(100% / 3 - 11px);
     background-color: #d3d3d3;
     margin: 0 8px 16px;
@@ -62,7 +62,10 @@ export default {
     }
     
     &__img_wrapper {
-        background: url('./nopict.jpg') no-repeat center 0%;
+        background-image: url('./nopict.jpg');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
         border-radius: 4px 4px 0 0;
         width: 100%;
         height: 223px;
@@ -126,6 +129,28 @@ export default {
 
     &:hover .product-elem__remove-button {
         display: block;
+    }
+}
+
+
+
+@media (max-width: 1280px) { 
+    .product-elem {
+        width: calc(100% / 2 - 18px);
+        margin: 0 0 16px;
+    }
+}
+
+@media (max-width: 980px) { 
+    .product-elem {
+        width: calc(100% - 18px);
+        margin: 0 0 16px;
+    }
+}
+
+@media (max-width: 720px) { 
+    .product-elem {  
+        width: 100%;
     }
 }
 </style>
