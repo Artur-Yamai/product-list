@@ -24,9 +24,6 @@ export default {
 body {
   background: #f7f6f4;
   font-family: 'Source Sans Pro', sans-serif;
-  -ms-overflow-style: none;
-   overflow: -moz-scrollbars-none;
-  &::-webkit-scrollbar { width: 0; }
 }
 
 h1 {
