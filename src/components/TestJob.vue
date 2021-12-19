@@ -27,10 +27,5 @@ export default {
   padding: 32px;
   max-width: 1440px;
   margin: 0 auto;
-
-  &__wrapper {
-      display: flex;
-      justify-content: space-between;
-  }
 }
 </style>
