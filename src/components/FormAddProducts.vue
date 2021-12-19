@@ -1,5 +1,5 @@
 <template>
-    <form class="add-products-form">
+    <form class="add-products-form" :class="fixedClass">
         <div class="add-products-form__wrapper">
             <p class="add-products-form__label add-products-form__label--require">Наименование товара</p>
             <MyInput
@@ -34,7 +34,9 @@
 
         <div class="add-products-form__wrapper">
             <p class="add-products-form__label add-products-form__label--require">Цена товара</p>
-            <MyInput 
+            <input
+                class="my-input"
+                id="mask-input"
                 placeholder="Введите цену"
                 v-model="product.price"
             />
@@ -56,6 +58,7 @@
 
 <script>
 import { MyInput, MyTextArea, MyButton } from './custom-elements';
+import Inputmask from "inputmask";
 
 export default {
     components: {
@@ -67,11 +70,16 @@ export default {
         return {
             product: {},
             flags: {},
-            price: '' 
+            scrollWindow: 0,
+            fixedClass: '',
         }
     },
     created() {
-        this.load()
+        this.load();
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    mounted () {
+        this.setMask()
     },
     watch: {
         'product.imgSrc'(val) {
@@ -81,7 +89,7 @@ export default {
             if(val) {this.flags.title = true}
         },
         'product.price'(val) {
-            if(val) {this.flags.price = true;}
+            if(val) {this.flags.price = true}
         },
     },
     computed: {
@@ -89,12 +97,34 @@ export default {
             const p = this.product;
             return !(p.title && p.imgSrc && p.price)
         },
+        formatPrice() {
+            let arr = this.product.price.split('');
+            arr.splice(arr.length - 3, 1, ' ');
+            const newPrice = arr.join('');
+            return newPrice;
+        },
     },
     methods: {
+        setMask() {
+            // TODO
+            // маска костыльная, свое решение накидать не хватило ума.
+            // взял популярное из интернета, но оно не подходит под данный пункт задачи
+            // оставил чтоб не забыть, потом переделаю, уже для себя, когда не будте пожимать время
+            const im = new Inputmask("99 999");
+            const selector = document.querySelector('#mask-input');
+            im.mask(selector)
+        },
+        handleScroll () {
+            this.fixedClass = window.scrollY > 66 ? 'fixed-form' : '';
+        },
+        updateValue(e) {
+            this.product.price = e.target.value.replace(/ /g,'');
+        },
         addProduct() {
             const newProduct = JSON.parse(JSON.stringify(this.product))
+            console.log(newProduct);
             newProduct.id = Date.now();
-            newProduct.price = +newProduct.price;
+            newProduct.price = +(newProduct.price.replace(/ /g,''));
             this.$store.dispatch('SET_PRODUCT', newProduct);
             this.load();
             
@@ -159,6 +189,12 @@ export default {
     &__btn {
         margin-top: 12px;
     }
+
+    &.fixed-form {
+        position: fixed;
+        top: 16px;
+        width: 332px;
+    }
 }
 
 @media (max-width: 980px) { 
@@ -167,9 +203,15 @@ export default {
     }
 }
 
-@media (max-width: 980px) { 
+@media (max-width: 720px) { 
     .add-products-form {
         width: 100%;
+
+            &.fixed-form {
+            position: static;
+        }
     }
+
+    
 }
 </style>
