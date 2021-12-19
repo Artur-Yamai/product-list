@@ -18,7 +18,10 @@ export default {
         Header,
         FormAddProducts,
         ProductsList
-    }    
+    },
+    created() {
+        this.$store.dispatch('GET_STORAGE');
+    }
 }
 </script>
 
