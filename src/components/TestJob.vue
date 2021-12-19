@@ -25,6 +25,8 @@ export default {
 <style lang="scss">
 .test-job {    
   padding: 32px;
+  max-width: 1440px;
+  margin: 0 auto;
 
   &__wrapper {
       display: flex;
