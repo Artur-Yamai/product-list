@@ -58,7 +58,7 @@
 
 <script>
 import { MyInput, MyTextArea, MyButton } from './custom-elements';
-import Inputmask from "inputmask";
+import Imask from 'imask';
 
 export default {
     components: {
@@ -106,13 +106,18 @@ export default {
     },
     methods: {
         setMask() {
-            // TODO
-            // маска костыльная, свое решение накидать не хватило ума.
-            // взял популярное из интернета, но оно не подходит под данный пункт задачи
-            // оставил чтоб не забыть, потом переделаю, уже для себя, когда не будте пожимать время
-            const im = new Inputmask("99 999");
-            const selector = document.querySelector('#mask-input');
-            im.mask(selector)
+            Imask(
+                document.getElementById('mask-input'),
+                {
+                    mask: 'num',
+                    blocks: {
+                    num: {
+                        mask: Number,
+                        thousandsSeparator: ' '
+                        }
+                    }
+                }
+            );
         },
         handleScroll () {
             this.fixedClass = window.scrollY > 66 ? 'fixed-form' : '';
@@ -122,7 +127,6 @@ export default {
         },
         addProduct() {
             const newProduct = JSON.parse(JSON.stringify(this.product))
-            console.log(newProduct);
             newProduct.id = Date.now();
             newProduct.price = +(newProduct.price.replace(/ /g,''));
             this.$store.dispatch('SET_PRODUCT', newProduct);
