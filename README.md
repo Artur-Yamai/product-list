@@ -1,24 +1,14 @@
-# test-job
+# product-list
 
 ## Project setup
+(для работы вам понадобятся npm, vue-cli)
 ```
-npm install
-```
+1. Скачайте проект в выбранную вами попку;
+2. Поочередно выполните команды в терминале, указанные ниже:
 
-### Compiles and hot-reloads for development
+npm install
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+3. Откройте ссылку из терминала в любимом браузере
